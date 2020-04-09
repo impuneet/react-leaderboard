@@ -11,7 +11,7 @@ export default class App extends Component {
     super();
 
     this.state = {
-      sortBy: "age"
+      sortBy: ""
     }
 
   }
@@ -23,19 +23,18 @@ export default class App extends Component {
 
   handleClickName() {
     this.setState({sortBy : 'name'})
-    console.log('sortby age');
+    console.log('sortby name');
   }
 
   handleClickPoints() {
     this.setState({sortBy : 'points'})
-    console.log('sortby age');
+    console.log('sortby points');
   }
 
   handleClickRank() {
     this.setState({sortBy : 'rank'})
-    
+    console.log('sortby points');
   }
-
   render() {
     return (
       <div className="text-center buttons">

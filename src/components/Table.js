@@ -9,9 +9,17 @@ export default class Table extends Component {
 		}
 	}
 
-	componentWillReceiveProps() {
-		console.log(this.sortBy);
+	componentWillReceiveProps(newProps) {
+		console.log('updating props',newProps.sortBy);
+		this.sortData(newProps.sortBy);
 	}
+
+	sortData(sortBy){
+		let userCopy = [...this.state.users];
+		userCopy.sort(this.compareBy(sortBy));
+		this.setState({users: userCopy});
+	}
+
 
     // complete the comparators
 	compareByAge(a, b) {
@@ -29,6 +37,14 @@ export default class Table extends Component {
 	compareByRank(a, b) {
 		
 	}
+
+	compareBy(key) {
+		return function (a, b) {
+		  if (a[key] < b[key]) return -1;
+		  if (a[key] > b[key]) return 1;
+		  return 0;
+		};
+	  }
 
 	render() {
 		return (<div>
